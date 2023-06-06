@@ -31,7 +31,8 @@ const AddUser = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/student", student);
+    // console.log(process.env.PRODUCTION_API_URL_add);
+    await axios.post("https://student-tracker-be-utaf.onrender.com/student", student);
     navigate("/");
   };
 

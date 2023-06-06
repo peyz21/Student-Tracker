@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "@material-tailwind/react";
 const Home = () => {
   const [students, setStudents] = React.useState([]);
 
@@ -9,7 +8,9 @@ const Home = () => {
   }, []);
 
   const loadStudent = async () => {
-    const result = await axios.get("http://localhost:8080/students");
+    
+    // const result = await axios.get("http://localhost:8080/students");
+    const result = await axios.get("https://student-tracker-be-utaf.onrender.com/students");
     setStudents(result.data);
   };
 
