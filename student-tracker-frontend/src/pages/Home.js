@@ -19,15 +19,33 @@ const Home = () => {
         <table className="table table-bordered shadow">
           <thead>
             <tr>
-              <th scope="col" className="text-center">#</th>
-              <th scope="col" className="text-center">Name</th>
-              <th scope="col" className="text-center">Hair Color</th>
-              <th scope="col" className="text-center">Height</th>
-              <th scope="col" className="text-center">Weight</th>
-              <th scope="col" className="text-center">GPA</th>
-              <th scope="col" className="text-center">Email</th>
-              <th scope="col" className="text-center">Password</th>
-              <th scope="col" className="text-center">Actions</th>
+              <th scope="col" className="text-center">
+                #
+              </th>
+              <th scope="col" className="text-center">
+                Name
+              </th>
+              <th scope="col" className="text-center">
+                Hair Color
+              </th>
+              <th scope="col" className="text-center">
+                Height
+              </th>
+              <th scope="col" className="text-center">
+                Weight
+              </th>
+              <th scope="col" className="text-center">
+                GPA
+              </th>
+              <th scope="col" className="text-center">
+                Email
+              </th>
+              <th scope="col" className="text-center">
+                Password
+              </th>
+              <th scope="col" className="text-center">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +61,17 @@ const Home = () => {
                 <td className="text-center">{student.gpa}</td>
                 <td className="text-center">{student.email}</td>
                 <td className="text-center">{student.password}</td>
+                <td className="d-flex justify-content-center">
+                  <button className=" btn  btn-warning mx-2">
+                    View
+                  </button>
+                  <button className=" btn  btn-outline-warning mx-2">
+                    Edit
+                  </button>
+                  <button className=" btn btn-outline-danger mx-2">
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
