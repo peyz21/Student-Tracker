@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Card from "@material-tailwind/react";
 const Home = () => {
   const [students, setStudents] = React.useState([]);
 
