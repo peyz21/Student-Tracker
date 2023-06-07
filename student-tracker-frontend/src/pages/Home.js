@@ -21,14 +21,16 @@ const Home = () => {
 
   const loadStudent = async () => {
     const result = await axios.get(
-      "https://student-tracker-be-utaf.onrender.com/students"
+      "https://student-tracker-production.up.railway.app/students" //Railway.app
+      // "https://student-tracker-be-utaf.onrender.com/students" // RENDER
     );
     setStudents(result.data);
   };
 
   const deleteUser = async (id) => {
     await axios.delete(
-      `https://student-tracker-be-utaf.onrender.com/student/${id}`
+      `https://student-tracker-production.up.railway.app/student/${id}` //Railway.app
+      // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     loadStudent();
   }; // delete user function

@@ -28,9 +28,10 @@ const EditUser = () => {
   }, []);
   const { name, email, password, hairColor, height, weight, gpa } = student;
   const loadUser = async () => {
-    console.log(id);
+    // console.log(id);
     const result = await axios.get(
-      `https://student-tracker-be-utaf.onrender.com/student/${id}`
+        `https://student-tracker-production.up.railway.app/student/${id}` //Railway.app
+      // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     setStudent(result.data);
   };
@@ -42,7 +43,8 @@ const EditUser = () => {
     e.preventDefault();
     console.log(id);
     await axios.put(
-      `https://student-tracker-be-utaf.onrender.com/student/${id}`,
+      `https://student-tracker-production.up.railway.app/student/${id}`, //Railway.app
+      // `https://student-tracker-be-utaf.onrender.com/student/${id}`, // RENDER
       student
     );
     navigate("/");

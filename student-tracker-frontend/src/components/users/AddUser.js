@@ -32,7 +32,8 @@ const AddUser = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     // console.log(process.env.PRODUCTION_API_URL_add);
-    await axios.post("https://student-tracker-be-utaf.onrender.com/student", student);
+    await axios.post("https://student-tracker-production.up.railway.app/student", student); //Railway.app
+    // await axios.post("https://student-tracker-be-utaf.onrender.com/student", student); // RENDER
     navigate("/");
   };
 
