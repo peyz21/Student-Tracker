@@ -1,44 +1,49 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import ViewUser from "../components/users/ViewUser";
+import { Button } from "@material-tailwind/react";
+
 const Home = () => {
+  const [displayUser, setDisplayUser] = useState(null);
+  const { id } = useParams();
   const [students, setStudents] = React.useState([]);
   const navigate = useNavigate(); // to navigate to other pages
   useEffect(() => {
     loadStudent();
   }, []);
+  const handleView = (students) => {
+    setDisplayUser(students);
+  };
+  const handleClose = () => {
+    setDisplayUser(null);
+  };
 
   const loadStudent = async () => {
-    // const result = await axios.get("http://localhost:8080/students");
     const result = await axios.get(
       "https://student-tracker-be-utaf.onrender.com/students"
     );
     setStudents(result.data);
   };
 
+  const deleteUser = async (id) => {
+    await axios.delete(
+      `https://student-tracker-be-utaf.onrender.com/student/${id}`
+    );
+    loadStudent();
+  }; // delete user function
+
   return (
-    <div className="container ">
+    <div className="container">
       <div className="py-4">
-        <table className="table table-bordered shadow">
-          <thead>
+        <table className="table table-hover table-bordered shadow rounded-table">
+          <thead className="table-dark">
             <tr>
               <th scope="col" className="text-center">
                 #
               </th>
               <th scope="col" className="text-center">
                 Name
-              </th>
-              <th scope="col" className="text-center">
-                Hair Color
-              </th>
-              <th scope="col" className="text-center">
-                Height
-              </th>
-              <th scope="col" className="text-center">
-                Weight
-              </th>
-              <th scope="col" className="text-center">
-                GPA
               </th>
               <th scope="col" className="text-center">
                 Email
@@ -53,31 +58,47 @@ const Home = () => {
           </thead>
           <tbody>
             {students.map((student, index) => (
-              <tr>
-                <th scope="row" key={index} className="text-center">
+              <tr key={index}>
+                <th scope="row" className="text-center">
                   {index + 1}
                 </th>
                 <td className="text-center">{student.name}</td>
-                <td className="text-center">{student.hairColor}</td>
-                <td className="text-center">{student.height}</td>
-                <td className="text-center">{student.weight}</td>
-                <td className="text-center">{student.gpa}</td>
                 <td className="text-center">{student.email}</td>
                 <td className="text-center">{student.password}</td>
                 <td className="d-flex justify-content-center">
-                  <button className=" btn  btn-warning mx-2">View</button>
-                  <button
+                  <Button
+                    className="mx-1"
+                    fullWidth
+                    color="amber"
+                    size="md"
+                    onClick={() => handleView(student)}
+                  >
+                    View
+                  </Button>
+                  <Button
+                    className="mx-1"
+                    fullWidth
                     onClick={() => navigate(`/edituser/${student.id}`)}
-                    className=" btn  btn-outline-warning mx-2"
+                    color="amber"
+                    size="md"
                   >
                     Edit
-                  </button>
-                  <button className=" btn btn-outline-danger mx-2">
+                  </Button>
+                  <Button
+                    className="mx-1"
+                    fullWidth
+                    color="red"
+                    size="md"
+                    onClick={() => {
+                      deleteUser(student.id);
+                    }}
+                  >
                     Delete
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
+            <ViewUser user={displayUser} handleClose={handleClose} />
           </tbody>
         </table>
       </div>

@@ -6,6 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
+.rounded-table {
+  border-radius: 15px;
+  overflow: hidden;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
