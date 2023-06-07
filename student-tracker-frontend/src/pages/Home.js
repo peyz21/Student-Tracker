@@ -21,7 +21,7 @@ const Home = () => {
 
   const loadStudent = async () => {
     const result = await axios.get(
-      "https://student-tracker-production.up.railway.app/students" //Railway.app
+      `${process.env.REACT_APP_PRODUCTION_API}/students` //Railway.app
       // "https://student-tracker-be-utaf.onrender.com/students" // RENDER
     );
     setStudents(result.data);
@@ -29,7 +29,7 @@ const Home = () => {
 
   const deleteUser = async (id) => {
     await axios.delete(
-      `https://student-tracker-production.up.railway.app/student/${id}` //Railway.app
+      `${process.env.REACT_APP_PRODUCTION_API}/student/${id}` //Railway.app
       // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     loadStudent();

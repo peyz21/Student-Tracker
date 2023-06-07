@@ -30,7 +30,7 @@ const EditUser = () => {
   const loadUser = async () => {
     // console.log(id);
     const result = await axios.get(
-        `https://student-tracker-production.up.railway.app/student/${id}` //Railway.app
+        `${process.env.REACT_APP_PRODUCTION_API}/student/${id}` //Railway.app
       // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     setStudent(result.data);
@@ -43,7 +43,7 @@ const EditUser = () => {
     e.preventDefault();
     console.log(id);
     await axios.put(
-      `https://student-tracker-production.up.railway.app/student/${id}`, //Railway.app
+      `${process.env.REACT_APP_PRODUCTION_API}/student/${id}`, //Railway.app
       // `https://student-tracker-be-utaf.onrender.com/student/${id}`, // RENDER
       student
     );
