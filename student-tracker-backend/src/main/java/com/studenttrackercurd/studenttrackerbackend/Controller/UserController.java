@@ -16,7 +16,6 @@ import com.studenttrackercurd.studenttrackerbackend.Model.User;
 import com.studenttrackercurd.studenttrackerbackend.Repository.UserRepository;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
 public class UserController {
     
     @Autowired
