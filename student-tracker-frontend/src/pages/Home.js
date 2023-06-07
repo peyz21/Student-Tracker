@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [students, setStudents] = React.useState([]);
-
+  const navigate = useNavigate(); // to navigate to other pages
   useEffect(() => {
     loadStudent();
   }, []);
 
   const loadStudent = async () => {
-    
     // const result = await axios.get("http://localhost:8080/students");
-    const result = await axios.get("https://student-tracker-be-utaf.onrender.com/students");
+    const result = await axios.get(
+      "https://student-tracker-be-utaf.onrender.com/students"
+    );
     setStudents(result.data);
   };
 
@@ -63,10 +65,11 @@ const Home = () => {
                 <td className="text-center">{student.email}</td>
                 <td className="text-center">{student.password}</td>
                 <td className="d-flex justify-content-center">
-                  <button className=" btn  btn-warning mx-2">
-                    View
-                  </button>
-                  <button className=" btn  btn-outline-warning mx-2">
+                  <button className=" btn  btn-warning mx-2">View</button>
+                  <button
+                    onClick={() => navigate(`/edituser/${student.id}`)}
+                    className=" btn  btn-outline-warning mx-2"
+                  >
                     Edit
                   </button>
                   <button className=" btn btn-outline-danger mx-2">

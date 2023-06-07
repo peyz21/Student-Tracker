@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddUser from "./components/users/AddUser";
+import EditUser from "./components/users/EditUser";
 function App() {
   return (
     <React.Fragment>
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/addstudent" element={<AddUser />} />
+          <Route exact path="/edituser/:id" element={<EditUser />} />
         </Routes>
         
       </Router>

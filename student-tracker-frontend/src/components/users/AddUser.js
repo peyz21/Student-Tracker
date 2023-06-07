@@ -46,7 +46,7 @@ const AddUser = () => {
             className="mb-4 grid h-28 place-items-center"
           >
             <Typography variant="h3" color="white">
-              Student Information
+              Fill in the Student Information
             </Typography>
           </CardHeader>
           <CardBody color="teal" className="flex flex-col gap-4">
@@ -123,7 +123,7 @@ const AddUser = () => {
             />
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" color="blue" type="submit" fullWidth>
+            <Button variant="gradient" color="amber" type="submit" fullWidth>
               Add
             </Button>
             <Button
