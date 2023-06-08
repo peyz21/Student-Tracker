@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+// discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
+// for the assistance with the documentation of the code, but the logic and main code configiration is my own.
+
 import { useNavigate } from "react-router-dom";
 import { Button, Typography, Navbar } from "@material-tailwind/react";
 

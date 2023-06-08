@@ -1,3 +1,6 @@
+// discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
+// for the assistance with the documentation of the code, but the logic and main code configiration is my own.
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,11 +13,14 @@ import {
   Input,
   Button,
 } from "@material-tailwind/react";
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 const EditUser = () => {
   const { id } = useParams();
   const navigate = useNavigate(); // to navigate to other pages
-  const [student, setStudent] = React.useState({
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [student, setStudent] = useState({
     name: "",
     email: "",
     password: "",
@@ -30,7 +36,7 @@ const EditUser = () => {
   const loadUser = async () => {
     // console.log(id);
     const result = await axios.get(
-        `${process.env.REACT_APP_PRODUCTION_API}/student/${id}` //Railway.app
+      `${process.env.REACT_APP_PRODUCTION_API}/student/${id}` //Railway.app
       // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     setStudent(result.data);
@@ -83,16 +89,35 @@ const EditUser = () => {
               required
               onChange={(e) => onInputChange(e)}
             />
-            <Input
-              color="teal"
-              type="password"
-              label="Password"
-              size="lg"
-              value={password}
-              name="password"
-              required
-              onChange={(e) => onInputChange(e)}
-            />
+            <div style={{ position: "relative" }}>
+              <Input
+                color="teal"
+                type={showPassword ? "text" : "password"}
+                label="Password"
+                size="lg"
+                value={password}
+                name="password"
+                required
+                onChange={(e) => onInputChange(e)}
+              />
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  right: "10px",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                {showPassword ? (
+                  <EyeSlashFill color="gray" size="20" />
+                ) : (
+                  <EyeFill color="gray" size="20" />
+                )}
+              </div>
+            </div>
+
             <Input
               color="teal"
               label="Hair Color"

@@ -1,3 +1,6 @@
+// discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
+// for the assistance with the documentation of the code, but the logic and main code configiration is my own.
+
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navigationbar from "./components/Navigationbar";
