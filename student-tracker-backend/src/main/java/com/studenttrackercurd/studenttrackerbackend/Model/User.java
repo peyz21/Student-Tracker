@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.PrePersist;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Students")
@@ -21,9 +24,14 @@ public class User {
     private Float gpa;
     private String email;
     private String password;
+    //temp?
+    private LocalDateTime creationTimestamp;
 
+    @PrePersist
+    public void prePersist() {
+        this.creationTimestamp = LocalDateTime.now();
+    }
 
-    
     public String getName() {
         return name;
     }
@@ -71,6 +79,12 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public LocalDateTime getCreationTimestamp() {
+        return creationTimestamp;
+    }
+    public void setCreationTimestamp(LocalDateTime creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
     }
 
     

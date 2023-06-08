@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.data.domain.Sort;
 import com.studenttrackercurd.studenttrackerbackend.Exception.UserNotFoundException;
 import com.studenttrackercurd.studenttrackerbackend.Model.User;
 import com.studenttrackercurd.studenttrackerbackend.Repository.UserRepository;
@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/students")
     List<User> getAllUsers(){
-        return userRepo.findAll();
+        return userRepo.findAll(Sort.by(Sort.Direction.ASC, "creationTimestamp"));
     }
 
     @GetMapping("/student/{id}")
