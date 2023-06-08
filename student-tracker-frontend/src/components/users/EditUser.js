@@ -23,7 +23,8 @@ const EditUser = () => {
   const navigate = useNavigate();
   // React state variable for showing/hiding password
   const [showPassword, setShowPassword] = useState(false);
-
+  // React state variable for GPA error
+  const [gpaError, setGpaError] = useState("");
   // React state variable for student's form data
   const [student, setStudent] = useState({
     name: "",
@@ -43,7 +44,7 @@ const EditUser = () => {
     loadUser();
   }, []);
 
-   // Function to load the user's data from the API
+  // Function to load the user's data from the API
   const loadUser = async () => {
     // console.log(id);
     const result = await axios.get(
@@ -56,17 +57,31 @@ const EditUser = () => {
   const onInputChange = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
-  
-  // Handler for form submit
+
+  // Handler for GPA input change - updates student's GPA data and validates GPA
+  const onGpaChange = (e) => {
+    const value = e.target.value;
+    if (value < 0.0 || value > 4.5) {
+      setGpaError("Please enter a value between 0 and 4.50");
+    } else {
+      setGpaError("");
+    }
+    setStudent({ ...student, gpa: value });
+  };
+
+  // Handler for form submit - checks for errors before sending a post request to the API endpoint
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(id);
-    await axios.put(
-      `${process.env.REACT_APP_PRODUCTION_API}/student/${id}`, //Railway.app
-      student
-    );
-    // Navigate to home
-    navigate("/");
+
+    if (!gpaError) {
+      console.log(id);
+      await axios.put(
+        `${process.env.REACT_APP_PRODUCTION_API}/student/${id}`, //Railway.app
+        student
+      );
+      // Navigate to home
+      navigate("/");
+    }
   };
 
   return (
@@ -145,6 +160,7 @@ const EditUser = () => {
               color="teal"
               type="number"
               min="0"
+              max="300"
               label="Height"
               size="lg"
               value={height}
@@ -156,6 +172,7 @@ const EditUser = () => {
               color="teal"
               type="number"
               min="0"
+              max="600"
               label="Weight"
               size="lg"
               value={weight}
@@ -165,14 +182,17 @@ const EditUser = () => {
             />
             <Input
               color="teal"
-              type="float"
-              min="0"
+              type="number"
+              step="0.01"
+              min="0.00"
+              max="4.50"
               label="GPA"
               size="lg"
               value={gpa}
               name="gpa"
               required
-              onChange={(e) => onInputChange(e)}
+              onChange={(e) => onGpaChange(e)}
+              error={gpaError}
             />
           </CardBody>
           <CardFooter className="pt-0">
