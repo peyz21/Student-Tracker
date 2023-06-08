@@ -1,19 +1,24 @@
 // discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
 // for the assistance with the documentation of the code, but the logic and main code configiration is my own.
 
+// Import necessary libraries and components
 import { Typography, Button } from "@material-tailwind/react";
 import React, { Fragment } from "react";
 import { Card, Modal } from "react-bootstrap";
 
-
-//this is to scale the box
+// Function to scale a number from one range to another
+// Used for scaling height and weight to appropriate sizes for boxStyle
 const scale = (num, in_min, in_max, out_min, out_max) => {
   return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
 };
 
-//this is to display the user's information modal
+// ViewUser component for displaying student's information in a modal
 const ViewUser = ({ user, handleClose }) => {
+  // Create an empty object for boxStyle
   let boxStyle = {};
+
+  // If there is a student, scale the width and height of the box according to student's weight and height
+  // Also set the border color according to student's hair color
   if (user) {
     const width = scale(user.weight, 10, 150, 50, 150);
     const height = scale(user.height, 100, 220, 50, 150);
@@ -21,10 +26,11 @@ const ViewUser = ({ user, handleClose }) => {
       width: `${width}px`,
       height: `${height}px`,
       border: `2px solid ${user.hairColor}`,
-      margin: "10px auto", 
+      margin: "10px auto",
     };
   }
 
+  // Render a modal with user's information, if a user is provided
   return (
     <Modal show={user != null} onHide={handleClose} centered>
       <Card className="shadow-sm">
@@ -32,8 +38,11 @@ const ViewUser = ({ user, handleClose }) => {
           <h3 className="my-2">{user ? `${user.name}'s Information` : ""}</h3>
         </Card.Header>
         <Card.Body>
+          {/* Display the student's information, if a student is provided */}
           {user && (
             <Fragment>
+              {/* Various Typography components to display user's information */}
+              {/* A div with boxStyle to visualize the user's weight and height */}
               <Typography variant="h5" className="my-2 text-dark">
                 Name: <span className="text-gray-600">{user.name}</span>
               </Typography>
@@ -56,11 +65,15 @@ const ViewUser = ({ user, handleClose }) => {
               <Typography variant="h5" className="my-2 text-dark">
                 Password: <span className="text-gray-600">{user.password}</span>
               </Typography>
-              <div style={boxStyle} className="user-box"> </div> {/* to display the box */}
+              <div style={boxStyle} className="user-box">
+                {" "}
+              </div>{" "}
+              {/* to display the box which has the user in it */}
             </Fragment>
           )}
         </Card.Body>
         <Card.Footer className="text-center">
+          {/* Button to close the modal */}
           <Button
             variant="gradient"
             color="red"

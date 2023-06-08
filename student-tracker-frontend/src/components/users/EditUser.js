@@ -1,6 +1,7 @@
 // discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
 // for the assistance with the documentation of the code, but the logic and main code configiration is my own.
 
+// Import necessary libraries and components
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,10 +17,14 @@ import {
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 const EditUser = () => {
+  // Use React Router's useParams hook to get the 'id' param from the current URL
   const { id } = useParams();
-  const navigate = useNavigate(); // to navigate to other pages
+  // React Router's navigate hook
+  const navigate = useNavigate();
+  // React state variable for showing/hiding password
   const [showPassword, setShowPassword] = useState(false);
 
+  // React state variable for student's form data
   const [student, setStudent] = useState({
     name: "",
     email: "",
@@ -28,35 +33,44 @@ const EditUser = () => {
     height: "",
     weight: "",
     gpa: "",
-  }); // to store the data from the form
+  });
+
+  // Destructure student's form data
+  const { name, email, password, hairColor, height, weight, gpa } = student;
+
+  // Fetch the student data when component mounts
   useEffect(() => {
     loadUser();
   }, []);
-  const { name, email, password, hairColor, height, weight, gpa } = student;
+
+   // Function to load the user's data from the API
   const loadUser = async () => {
     // console.log(id);
     const result = await axios.get(
       `${process.env.REACT_APP_PRODUCTION_API}/student/${id}` //Railway.app
-      // `https://student-tracker-be-utaf.onrender.com/student/${id}` // RENDER
     );
     setStudent(result.data);
   };
+
+  // Handler for form inputs change - updates student's form data
   const onInputChange = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
-
+  
+  // Handler for form submit
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(id);
     await axios.put(
       `${process.env.REACT_APP_PRODUCTION_API}/student/${id}`, //Railway.app
-      // `https://student-tracker-be-utaf.onrender.com/student/${id}`, // RENDER
       student
     );
+    // Navigate to home
     navigate("/");
   };
 
   return (
+    /* Various UI components for form inputs and handlers for form submit and password show/hide action */
     <div className="flex justify-center items-center py-5">
       <Card className="w-1/2 shadow">
         <form onSubmit={(e) => onSubmit(e)}>

@@ -1,6 +1,7 @@
 // discplimer: I used Bootstrap,React-Bootstrap, tailwindCSS, and React-Material UI for some compontents and I used the ChatGPT/Copilot
 // for the assistance with the documentation of the code, but the logic and main code configiration is my own.
 
+// Import necessary libraries and components
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -15,10 +16,14 @@ import {
 } from "@material-tailwind/react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
+// AddUser component
 const AddUser = () => {
+  // React Router's navigate hook
   const navigate = useNavigate();
 
-  // this is to store the data from the form filled by the user
+  // React state variable for showing/hiding password
+  const [showPassword, setShowPassword] = useState(false);
+  // React state variable for student's form data
   const [student, setStudent] = useState({
     name: "",
     email: "",
@@ -29,24 +34,26 @@ const AddUser = () => {
     gpa: "",
   });
 
+  // Destructure student's form data
   const { name, email, password, hairColor, height, weight, gpa } = student;
-  const [showPassword, setShowPassword] = useState(false);
+
+  // Handler for form inputs change - updates student's form data
   const onInputChange = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
-
+  // Handler for form submit Send a post request to the API endpoint with student's form data
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(process.env.PRODUCTION_API_URL_add);
+
     await axios.post(
       `${process.env.REACT_APP_PRODUCTION_API}/student`,
       student
     ); //Railway.app
-    // await axios.post("https://student-tracker-be-utaf.onrender.com/student", student); // RENDER
     navigate("/");
   };
 
   return (
+    /* Various UI components for form inputs and handlers for form submit and password show/hide action */
     <div className="flex justify-center items-center py-5">
       <Card className="w-1/2 shadow">
         <form onSubmit={(e) => onSubmit(e)}>
