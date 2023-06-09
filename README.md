@@ -10,12 +10,12 @@ The user can then view each student's name, email, password, and also click on t
   -Edit Button: after clicked user will be redirected to a new page, which then he/she can update the information of the student chosen
   -Remove Button: after clicked the user will delete the chosen student from the table and all the information related to the student.
   
-###A Demo video for the User Workflow:
+### A Demo video for the User Workflow:
 
 https://github.com/peyz21/Student-Tracker/assets/64120482/e56eb261-31b4-4a91-b5a8-7e516be60a46
 
 
-###Dataflow Display
+### Dataflow Display
 
 ![dataflow](https://github.com/peyz21/Student-Tracker/assets/64120482/2d49b6ad-6d63-4589-a2e4-edf651ccf5d0)
 
