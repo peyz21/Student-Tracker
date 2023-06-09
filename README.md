@@ -2,7 +2,7 @@
 This app will act as a student-data tracker. The purpose of the app is to integrate, and get comfortable with all components of the RESTful app implementation. This repository includes a REST-Client under **"student-Tracker-frontend"** and a REST-service under **"student-tracker-backend"**. React was the framework which was used in the frontend and the backend was written using JavaSpringBoot framework. the database and the front client is then compiled and hosted on render.com, however the backend is hosted on the Railway.app to improve efficiency and speed.
 
 
-#User workflow
+# User workflow
 A user will click on the **ADD STUDENT** in order to make a new student, and after fillin in the form will press the **ADD**  button in order to submit the form. the data will then send into the back end and proccessed, while simultaneously the user will be redirected to the main page again and the new student will be displayed.
 The user can then view each student's name, email, password, and also click on the :
 
