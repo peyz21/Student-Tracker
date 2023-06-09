@@ -6,10 +6,14 @@ This app will act as a student-data tracker. The purpose of the app is to integr
 A user will click on the **ADD STUDENT** in order to make a new student, and after fillin in the form will press the **ADD**  button in order to submit the form. the data will then send into the back end and proccessed, while simultaneously the user will be redirected to the main page again and the new student will be displayed.
 The user can then view each student's name, email, password, and also click on the :
 
-  -View Button: after clicked a modal will be displayed on the page showing the student's information, along side a representation of their person model with a rectangular shape
-  -Edit Button: after clicked user will be redirected to a new page, which then he/she can update the information of the student chosen
-  -Remove Button: after clicked the user will delete the chosen student from the table and all the information related to the student.
-  
+
+- **View Button** : after clicked a modal will be displayed on the page showing the student's information, along side a representation of their person model with a rectangular shape. 
+ 
+- **Edit Button** : after clicked user will be redirected to a new page, which then he/she can update the information of the student chosen.
+ 
+- **Remove Button** : after clicked the user will delete the chosen student from the table and all the information related to the student.
+<br>
+
 ### A Demo video for the User Workflow
 
 https://github.com/peyz21/Student-Tracker/assets/64120482/e56eb261-31b4-4a91-b5a8-7e516be60a46
