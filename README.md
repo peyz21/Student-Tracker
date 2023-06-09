@@ -10,7 +10,7 @@ The user can then view each student's name, email, password, and also click on t
   -Edit Button: after clicked user will be redirected to a new page, which then he/she can update the information of the student chosen
   -Remove Button: after clicked the user will delete the chosen student from the table and all the information related to the student.
   
-### A Demo video for the User Workflow:
+### A Demo video for the User Workflow
 
 https://github.com/peyz21/Student-Tracker/assets/64120482/e56eb261-31b4-4a91-b5a8-7e516be60a46
 
@@ -22,5 +22,6 @@ https://github.com/peyz21/Student-Tracker/assets/64120482/e56eb261-31b4-4a91-b5a
 The data inputted from user will move to the API service, and the to the database to be stored in the **"students" ** datatable and when requested it will be displayed on the homepage of the web application. The data is transformed in the format of JSON file. 
 
 
+### WebApp Link
 The website can be accessed through the link below: 
 https://student-tracker-front.onrender.com
