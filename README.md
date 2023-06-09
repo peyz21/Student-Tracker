@@ -23,7 +23,7 @@ https://github.com/peyz21/Student-Tracker/assets/64120482/e56eb261-31b4-4a91-b5a
 
 ![dataflow](https://github.com/peyz21/Student-Tracker/assets/64120482/2d49b6ad-6d63-4589-a2e4-edf651ccf5d0)
 
-The data inputted from user will move to the API service, and the to the database to be stored in the **"students" ** datatable and when requested it will be displayed on the homepage of the web application. The data is transformed in the format of JSON file. 
+The data inputted from user will move to the API service, and the to the database to be stored in the **"students"** datatable and when requested it will be passed through server back to the WebApp and displayed on the homepage of the web application. The data is transformed in the format of JSON file. 
 
 
 ### WebApp Link
