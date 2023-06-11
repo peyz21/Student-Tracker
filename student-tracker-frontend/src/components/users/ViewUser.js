@@ -51,10 +51,10 @@ const ViewUser = ({ user, handleClose }) => {
                 <span className="text-gray-600">{user.hairColor}</span>
               </Typography>
               <Typography variant="h5" className="my-2 text-dark">
-                Height: <span className="text-gray-600">{user.height}</span>
+                Height: <span className="text-gray-600">{user.height} Cm</span>
               </Typography>
               <Typography variant="h5" className="my-2 text-dark">
-                Weight: <span className="text-gray-600">{user.weight}</span>
+                Weight: <span className="text-gray-600">{user.weight} Kg</span>
               </Typography>
               <Typography variant="h5" className="my-2 text-dark">
                 GPA: <span className="text-gray-600">{user.gpa}</span>
@@ -65,15 +65,25 @@ const ViewUser = ({ user, handleClose }) => {
               <Typography variant="h5" className="my-2 text-dark">
                 Password: <span className="text-gray-600">{user.password}</span>
               </Typography>
+              <p class="text-center my-2 text-dark">
+                User Characteristics Display
+              </p>
               <div style={boxStyle} className="user-box">
-                {" "}
-              </div>{" "}
-              {/* to display the box which has the user in it */}
+                <div class="text-center">
+                  w:{user.weight} x h:{user.height}
+                </div>
+              </div>
+              {user.weight === 0 || user.height === 0 ? (
+                <p className="text-center text-danger">
+                  This is impossible For a human! but if you insist...
+                </p>
+              ) : (
+                ""
+              )}
             </Fragment>
           )}
         </Card.Body>
         <Card.Footer className="text-center">
-          {/* Button to close the modal */}
           <Button
             variant="gradient"
             color="red"
