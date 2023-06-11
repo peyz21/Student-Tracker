@@ -22,7 +22,7 @@ const Navigationbar = () => {
             color="blue-gray"
             as="a"
             href="/"
-            className="mr-4 cursor-pointer py-1.5 font-medium no-underline"
+            className="mr-4 cursor-pointer py-1.5 font-medium no-underline font-weight-bold"
           >
             Student Tracker App
           </Typography>
